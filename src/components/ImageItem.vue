@@ -22,7 +22,6 @@ import ImagePlaceholder from './ImagePlaceholder.vue';
   filters: {
     stringifyDate(datestring: string): string {
       const date = new Date(datestring);
-      console.log(datestring);
       return date.toLocaleDateString();
     },
   },
