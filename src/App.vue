@@ -22,11 +22,18 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #f2eeee;
+    text-decoration: none;
+    font-size: 1.5rem;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #9499c4;
     }
   }
+
 }
+  body {
+    background: #221D30;
+    margin: 0;
+  }
 </style>

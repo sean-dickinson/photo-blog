@@ -1,18 +1,46 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <image-item
+      v-for="image in images"
+      :key="image.id"
+      :source="image.source"
+      :width="image.width"
+      :height="image.height"
+      :date="image.creationtime"
+    />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import ImageItem from "@/components/ImageItem.vue";
+import { ImageData } from "@/models/image";
+import { Component, Vue } from "vue-property-decorator";
 
-export default {
-  name: 'Home',
+//@ts-ignore
+import reader from "g-sheets-api";
+@Component({
   components: {
-    HelloWorld
+    ImageItem
+  },
+  name: "Home"
+})
+export default class Home extends Vue {
+  images: ImageData[] = [];
+  mounted() {
+    reader(
+      { sheetId: "1_d8YsucXx4i9ZwNDea_ivAozU4rru4rV5HU8cpLWwWM" },
+      (results: ImageData[]) => {
+        this.images = [...results];
+        console.log(this.images);
+      }
+    );
   }
 }
 </script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+</style>
