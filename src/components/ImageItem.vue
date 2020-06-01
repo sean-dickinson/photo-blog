@@ -13,60 +13,60 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import ImagePlaceholder from "./ImagePlaceholder.vue";
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import ImagePlaceholder from './ImagePlaceholder.vue';
 @Component({
   components: {
-    ImagePlaceholder
+    ImagePlaceholder,
   },
   filters: {
-    stringifyDate: function(datestring: string): string{
+    stringifyDate(datestring: string): string {
       const date = new Date(datestring);
       console.log(datestring);
       return date.toLocaleDateString();
-    }
-  }
+    },
+  },
 })
 export default class ImageItem extends Vue {
+
+  get url() {
+    if (this.source) {
+      return `${this.source}=w${this.calcWidth}`;
+    }
+  }
+
+  get calcHeight() {
+    return (this.height * this.calcWidth) / this.width;
+  }
+  public isLoaded: boolean = false;
+  public el!: HTMLImageElement;
+  public calcWidth: number = 1000;
   @Prop() private source!: string;
   @Prop() private height!: number;
   @Prop() private width!: number;
   @Prop() private date!: string;
-  isLoaded: boolean = false;
-  el!: HTMLImageElement;
-  calcWidth: number = 1000;
-
-  get url(){
-    if(this.source){
-      return `${this.source}=w${this.calcWidth}`
-    }
-  }
-
-  get calcHeight(){
-    return (this.height * this.calcWidth) / this.width;
-  }
-  mounted() {
+  public mounted() {
     this.el = this.$refs.img as HTMLImageElement;
-    if ("IntersectionObserver" in window) {
+    if ('IntersectionObserver' in window) {
       this.createObserver();
     } else {
       this.loadImage();
     }
   }
 
-  loadImage() {
-    this.el.addEventListener("load", () => {
+  public loadImage() {
+    this.el.addEventListener('load', () => {
       setTimeout(() => (this.isLoaded = true), 100);
     });
-    this.el.addEventListener("error", () => console.log("error"));
+    this.el.addEventListener('error', () => console.log('error'));
     this.el.src = this.el.dataset.url as string;
   }
 
-  handleIntersect(
+  public handleIntersect(
     entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
+    observer: IntersectionObserver,
   ) {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         this.loadImage();
         observer.unobserve(this.el);
@@ -74,10 +74,10 @@ export default class ImageItem extends Vue {
     });
   }
 
-  createObserver() {
+  public createObserver() {
     const options: IntersectionObserverInit = {
       root: null,
-      threshold: 0.25
+      threshold: 0.25,
     };
     const observer = new IntersectionObserver(this.handleIntersect, options);
     observer.observe(this.el);

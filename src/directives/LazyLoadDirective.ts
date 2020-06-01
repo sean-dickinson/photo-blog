@@ -2,7 +2,7 @@ export default {
     inserted: (el: HTMLElement) => {
         function loadImage() {
             const element: Element | undefined = Array.from(el.children).find(
-                (imgEl) => imgEl.nodeName === 'IMG'
+                (imgEl) => imgEl.nodeName === 'IMG',
             );
             if (element) {
                 const imageElement = element as HTMLImageElement;
@@ -17,7 +17,7 @@ export default {
         function handleIntersect(entries: IntersectionObserverEntry[], observer: IntersectionObserver) {
             console.log(entries);
             entries.forEach((entry) => {
-                console.log(entry)
+                console.log(entry);
                 if (entry.isIntersecting) {
                     loadImage();
                     observer.unobserve(el);

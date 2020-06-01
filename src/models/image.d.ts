@@ -1,7 +1,7 @@
 export interface ImageData {
-    source: string,
-    width: number,
-    height: number,
-    id: string,
-    creationTime: string
+    source: string;
+    width: number;
+    height: number;
+    id: string;
+    creationTime: string;
 }
