@@ -3,7 +3,7 @@
     <section class="container">
       <card
         v-for="card of cards"
-        :key="card"
+        :key="card.title"
         :title="card.title"
         :body="card.body"
       />

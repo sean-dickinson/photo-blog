@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component({})
+@Component
 export default class Card extends Vue {
     @Prop() public title!: string;
     @Prop() public body!: string;

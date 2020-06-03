@@ -1,14 +1,13 @@
 <template>
   <figure class="image-wrapper">
-    <image-placeholder :loading="!isLoaded" :height="calcHeight" :width="calcWidth" />
+    <figcaption>{{date | stringifyDate}}</figcaption>
+    <image-placeholder :loading="!isLoaded" />
     <img
       :class="{hidden: !isLoaded}"
       ref="img"
       :data-url="url"
-      :height="calcHeight"
-      :width="calcWidth"
+     
     />
-    <figcaption>{{date | stringifyDate}}</figcaption>
   </figure>
 </template>
 
@@ -85,6 +84,7 @@ export default class ImageItem extends Vue {
 </script>
 
 <style scoped>
+
 .image-wrapper {
   text-align: center;
   margin: 0;
@@ -93,20 +93,28 @@ export default class ImageItem extends Vue {
   align-items: center;
   justify-items: center;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 500px 1fr;
+  grid-template-columns: 1fr 1000px 1fr;
   width: 100%;
+}
+
+@media screen and (max-width: 999px){
+  .image-wrapper {
+    grid-template-columns: 1fr 90vw 1fr;
+  }
 }
 
 
 img {
-  grid-row: 1;
+  grid-row: 2;
   grid-column: 2 / 2;
   opacity: 1;
   transition: opacity 0.3s 0.5s;
+  max-width:100%;
+  height: auto;
 }
 
 figcaption {
-  grid-row: 2;
+  grid-row: 1;
   grid-column: 2/2;
   color: #f2eeee;
   font-style: italic;

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{loading}" class="placeholder-item" :style="`height: ${height}px; width: ${width}px`"></div>
+  <div :class="{loading}" class="placeholder-item"></div>
 </template>
 
 <script lang="ts">
@@ -7,8 +7,6 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ImagePlaceholder extends Vue {
-  @Prop() private height!: number;
-  @Prop() private width!: number;
   @Prop() private loading!: boolean;
 }
 </script>
@@ -18,12 +16,14 @@ export default class ImagePlaceholder extends Vue {
   box-shadow: 0 4px 10px 0 rgba(33, 33, 33, 0.15);
   border-radius: 4px;
   overflow: hidden;
-  grid-row: 1 ;
+  grid-row: 2 ;
   grid-column: 2 / 2;
   z-index: 2;
   position: relative;
   background: rgba(255,255,255,0);
   transition: background 0.3s;
+  width: 100%;
+  height: 100%;
   /* background: white; */
 }
 
