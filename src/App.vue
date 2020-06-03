@@ -1,10 +1,15 @@
 <template>
   <div id="app">
     <nav id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <div class="nav-start">
+        <div class="logo"></div>
+      </div>
+      <div class="nav-end">
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+      </div>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -20,7 +25,15 @@
 #nav {
   padding: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    background-image: url("./assets/logo.png");
+    background-size: cover;
+    height: 52.4px;
+    width: 96.5px;
+  }
 
   a {
     font-weight: bold;
@@ -33,10 +46,9 @@
       color: rgb(148, 153, 196);
     }
   }
-
 }
-  body {
-    background: #221D30;
-    margin: 0;
-  }
+body {
+  background: #221d30;
+  margin: 0;
+}
 </style>
