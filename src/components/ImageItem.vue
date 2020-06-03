@@ -97,7 +97,7 @@ export default class ImageItem extends Vue {
   width: 100%;
 }
 
-@media screen and (max-width: 999px){
+@media screen and (max-width: 1024px){
   .image-wrapper {
     grid-template-columns: 1fr 90vw 1fr;
   }

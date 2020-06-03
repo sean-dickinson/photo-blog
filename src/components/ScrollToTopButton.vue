@@ -39,9 +39,11 @@ export default class ScrollToTopButton extends Vue {
 
 .scrollToTopButton {
     position: fixed;
-    bottom: 5rem;
-    right: 5rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    z-index: 2;
 }
+
 
 button{
     border-radius: 1.5rem;
