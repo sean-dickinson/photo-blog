@@ -33,6 +33,7 @@ export default class ImagePlaceholder extends Vue {
 
 .loading {
   background: white;
+  min-height: 500px;
 }
 .loading::before {
   content: "";

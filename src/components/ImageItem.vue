@@ -30,6 +30,7 @@ export default class ImageItem extends Vue {
   get url() {
     if (this.source) {
       return `${this.source}=w${this.calcWidth}`;
+      // return 'no'
     }
   }
 
