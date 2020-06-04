@@ -10,13 +10,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class ScrollToTopButton extends Vue {
-    @Prop() color!: string;
+    @Prop() public color!: string;
 
-    public scroll(){
+    public scroll() {
         window.scrollTo({
             top: 0,
-            behavior: "smooth"
-        })
+            behavior: 'smooth',
+        });
     }
 }
 </script>
