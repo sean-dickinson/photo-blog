@@ -49,7 +49,7 @@ button{
     border-radius: 1.5rem;
     width: 3rem;
     height: 3rem;
-    background: rgba(255,255,255,0);
+    background: rgba(34, 29, 48, 0);
     border-style: solid;
 }
 

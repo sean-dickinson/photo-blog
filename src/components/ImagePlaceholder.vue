@@ -16,7 +16,7 @@ export default class ImagePlaceholder extends Vue {
   box-shadow: 0 4px 10px 0 rgba(33, 33, 33, 0.15);
   border-radius: 4px;
   overflow: hidden;
-  grid-row: 2 ;
+  grid-row: 1 ;
   grid-column: 2 / 2;
   z-index: 2;
   position: relative;

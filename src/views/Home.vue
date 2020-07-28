@@ -45,4 +45,13 @@ export default class Home extends Vue {
 * {
   box-sizing: border-box;
 }
+.home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  max-width:1900px;
+  margin: 0 auto;
+
+}
 </style>
