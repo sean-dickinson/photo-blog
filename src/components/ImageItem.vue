@@ -1,8 +1,8 @@
 <template>
   <figure class="image-wrapper">
-    <figcaption>{{date | stringifyDate}}</figcaption>
-    <image-placeholder :loading="!isLoaded" />
+    <image-placeholder :height="calcHeight" :width="calcWidth" :loading="!isLoaded" />
     <img :class="{hidden: !isLoaded}" ref="img" :data-url="url" />
+    <figcaption>{{date | stringifyDate}}</figcaption>
   </figure>
 </template>
 
@@ -23,17 +23,17 @@ import ImagePlaceholder from "./ImagePlaceholder.vue";
 export default class ImageItem extends Vue {
   get url() {
     if (this.source) {
-      return `${this.source}=w${this.calcWidth}`;
+      return `${this.source}=h${this.calcHeight}`;
       // return 'no'
     }
   }
 
-  get calcHeight() {
-    return (this.height * this.calcWidth) / this.width;
+  get calcWidth() {
+    return (this.width * this.calcHeight) / this.height;
   }
   public isLoaded: boolean = false;
   public el!: HTMLImageElement;
-  public calcWidth: number = 1000;
+  public calcHeight: number = 400;
   @Prop() private source!: string;
   @Prop() private height!: number;
   @Prop() private width!: number;
@@ -80,38 +80,33 @@ export default class ImageItem extends Vue {
 
 <style scoped>
 .image-wrapper {
-  text-align: center;
   margin: 0;
   padding: 1em;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 600px 1fr;
+  display:flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
-@media screen and (max-width: 768px) {
-  .image-wrapper {
-    grid-template-columns: 1fr 90vw 1fr;
-  }
-}
 
 img {
-  grid-row: 1;
-  grid-column: 2 / 2;
   opacity: 1;
   transition: opacity 0.3s 0.5s;
-  max-width: 100%;
-  height: auto;
+}
+
+.image-wrapper:hover figcaption {
+  opacity: 1;
 }
 
 figcaption {
-  grid-row: 2;
-  grid-column: 2/2;
   color: #f2eeee;
   font-style: italic;
-  margin: 0.5em 0;
+  padding: 0.5em 0;
   font-size: 1.5rem;
+  position: relative;
+  top: -52px;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 .hidden {
