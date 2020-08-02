@@ -1,7 +1,7 @@
 <template>
   <figure class="image-wrapper">
     <image-placeholder :height="calcHeight" :width="calcWidth" :loading="!isLoaded" />
-    <img :class="{hidden: !isLoaded}" ref="img" :data-url="url" />
+    <img :height="calcHeight" :class="{hidden: !isLoaded}" ref="img" :data-url="url" />
     <figcaption>{{date | stringifyDate}}</figcaption>
   </figure>
 </template>
@@ -111,5 +111,6 @@ figcaption {
 
 .hidden {
   opacity: 0;
+  margin-top:-400px;
 }
 </style>
