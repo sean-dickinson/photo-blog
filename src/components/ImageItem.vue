@@ -103,7 +103,7 @@ figcaption {
   padding: 0.5em 0;
   font-size: 1.5rem;
   position: relative;
-  top: -52px;
+  margin-top: -52px;
   background: rgba(0,0,0,0.4);
   opacity: 0;
   transition: opacity 0.5s;
