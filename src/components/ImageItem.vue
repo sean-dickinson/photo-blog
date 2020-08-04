@@ -113,4 +113,11 @@ figcaption {
   opacity: 0;
   margin-top:-400px;
 }
+
+@media screen and (max-width:600px){
+  img {
+    height: auto;
+    max-width: 90vw;
+  }
+}
 </style>

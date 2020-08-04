@@ -12,12 +12,10 @@ export default class ImagePlaceholder extends Vue {
   @Prop() private width!: number;
 
   get style() {
-    return this.loading ? {
+    return {
       width: `${this.width}px`,
-      height: `${this.height}px`
-    } : {
-      width: 0,
-      height: 0
+      height: `${this.height}px`,
+      position: this.loading ? 'relative' : 'absolute'
     };
 
   }
@@ -64,6 +62,13 @@ export default class ImagePlaceholder extends Vue {
   }
   to {
     left: 100%;
+  }
+}
+
+@media screen and (max-width:600px){
+  .placeholder-item:not(.loading) {
+    max-width: 90vw;
+    height: auto !important;
   }
 }
 </style>

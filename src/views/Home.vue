@@ -54,4 +54,9 @@ export default class Home extends Vue {
   margin: 0 auto;
 
 }
+@media screen and (max-width: 600px){
+  .home{
+    width: 90vw;
+  }
+}
 </style>
