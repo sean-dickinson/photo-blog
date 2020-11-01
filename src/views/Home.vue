@@ -4,8 +4,7 @@
       v-for="image in images"
       :key="image.id"
       :source="image.source"
-      :width="image.width"
-      :height="image.height"
+     
       :date="image.creationtime"
     />
     <scroll-to-top-button color="#9499c4"></scroll-to-top-button>
@@ -46,17 +45,20 @@ export default class Home extends Vue {
   box-sizing: border-box;
 }
 .home{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-auto-rows: minmax(auto, 350px);
+  grid-gap: 5px;
+  grid-auto-flow: dense; 
   max-width:1900px;
   margin: 0 auto;
+  background:#e7e7e7;
 
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 768px){
   .home{
     width: 90vw;
+    grid-auto-rows: auto
   }
 }
 </style>

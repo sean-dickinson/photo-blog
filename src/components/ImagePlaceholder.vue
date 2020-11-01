@@ -1,5 +1,5 @@
 <template>
-  <div :style="style" :class="{loading}" class="placeholder-item"></div>
+  <div :class="{ loading }" class="placeholder-item"></div>
 </template>
 
 <script lang="ts">
@@ -8,17 +8,12 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 @Component
 export default class ImagePlaceholder extends Vue {
   @Prop() private loading!: boolean;
-  @Prop() private height!: number;
-  @Prop() private width!: number;
 
-  get style() {
-    return {
-      width: `${this.width}px`,
-      height: `${this.height}px`,
-      position: this.loading ? 'relative' : 'absolute'
-    };
-
-  }
+  // get style() {
+  //   return {
+  //     position: this.loading ? 'relative' : 'absolute',
+  //   };
+  // }
 }
 </script>
 
@@ -27,18 +22,18 @@ export default class ImagePlaceholder extends Vue {
   box-shadow: 0 4px 10px 0 rgba(33, 33, 33, 0.15);
   border-radius: 4px;
   overflow: hidden;
-  z-index: 2;
-  position: relative;
-  background: rgba(255,255,255,0);
-  transition: background 0.3s, height 0.3s, width 0.3s;
-  width: 100%;
+  z-index: 0;
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  transition: background 0.3s, z-index 0s 0.3s;
+  width: 100%; 
   height: 100%;
   /* background: white; */
 }
 
-
 .loading {
   background: white;
+  z-index: 2;
 }
 .loading::before {
   content: "";
@@ -47,7 +42,7 @@ export default class ImagePlaceholder extends Vue {
   left: -150px;
   top: 0;
   height: 100%;
-  width: 150px;
+  width: 100%;
   background: linear-gradient(
     to right,
     transparent 0%,
@@ -65,7 +60,7 @@ export default class ImagePlaceholder extends Vue {
   }
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width: 600px) {
   .placeholder-item:not(.loading) {
     max-width: 90vw;
     height: auto !important;

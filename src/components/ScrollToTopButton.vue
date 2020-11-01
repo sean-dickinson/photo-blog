@@ -51,10 +51,12 @@ button{
     height: 3rem;
     background: rgba(34, 29, 48, 0);
     border-style: solid;
+    transition: background 0.3s;
 }
 
 button:hover {
     cursor: pointer;
+    background:  rgba(238, 238, 238, 0.75);
 }
 
 button:focus {
