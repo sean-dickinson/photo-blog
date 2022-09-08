@@ -35,6 +35,7 @@ export default class Home extends Vue {
       (results: ImageData[]) => {
         this.images = [...results];
       },
+      ()=>{}
     );
   }
 }
