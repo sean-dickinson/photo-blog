@@ -5,7 +5,7 @@
       :key="image.id"
       :source="image.source"
      
-      :date="image.creationtime"
+      :date="image.creationTime"
     />
     <scroll-to-top-button color="#9499c4"></scroll-to-top-button>
   </div>
@@ -31,7 +31,7 @@ export default class Home extends Vue {
   public images: ImageData[] = [];
   public mounted() {
     reader(
-      { sheetId: '1_d8YsucXx4i9ZwNDea_ivAozU4rru4rV5HU8cpLWwWM' },
+      { sheetId: '1_d8YsucXx4i9ZwNDea_ivAozU4rru4rV5HU8cpLWwWM', apiKey: 'AIzaSyBirjiTI1pSdhgh_YQZf0JmOXMr6jJQP70' },
       (results: ImageData[]) => {
         this.images = [...results];
       },
